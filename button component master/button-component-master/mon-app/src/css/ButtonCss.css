@@ -1,0 +1,30 @@
+.box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 3rem;
+  }
+  
+  .box>span {
+    margin: 1rem 0;
+  }
+  
+  button {
+    padding: .8rem 1.5rem;
+    border-radius: 10px;
+    border: none;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  
+  .labelHover {
+    color: #888;
+  }
+  
+  
+  .iconLeft svg {
+    margin-right: 1rem;
+  }
+  .iconRight svg {
+    margin-left: 1rem;
+  }
