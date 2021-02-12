@@ -5,11 +5,18 @@
     <Info/>
     <Skills/>
     <SoftSkills/>
-  </div>
+    <Education/>
+    <Experience/>
+    <Projects/>
+    
+    
+      </div>
 </template>
 
 <script>
-
+import Projects from "./components/Projects.vue"
+import Experience from "./components/Experience.vue"
+import Education from "./components/Education.vue"
 import SoftSkills from "./components/SoftSkills.vue"
 import Skills from "./components/Skills.vue"
 import Info from "./components/Info.vue"
@@ -19,7 +26,10 @@ export default {
     
     Info,
     Skills,
-    SoftSkills
+    SoftSkills,
+    Education,
+    Experience,
+    Projects,
   }
 }
 </script>
