@@ -9,13 +9,13 @@
 
     <b-card-group class="viewSoft">
     
-    <b-card header="Default" class="text-center">
-    <h5>No label</h5>
-     <b-card-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</b-card-text>
+    <b-card header="SoftSkills" class="text-center">
+    
+     <b-card-text>Team Work</b-card-text>
     <b-progress :value="value" :max="max" class="mb-3"></b-progress>
-     <b-card-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</b-card-text>
+     <b-card-text>Leadership</b-card-text>
     <b-progress :value="value" :max="max" class="mb-3"></b-progress>
-     <b-card-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</b-card-text>
+     <b-card-text>Active Listening</b-card-text>
     <b-progress :value="value" :max="max" class="mb-3"></b-progress>
     </b-card>
 

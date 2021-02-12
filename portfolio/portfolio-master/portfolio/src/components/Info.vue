@@ -2,8 +2,13 @@
   <div>
     <div class="viewport">
       <md-toolbar :md-elevation="1">
-        <span class="md-title">Full</span>
+        <h2 class=" title" >  Hichem Samti</h2>
       </md-toolbar>
+
+      <div class="md-list-item-text">
+            <h2>Sotfware engeneer</h2>
+           
+          </div>
 
       <md-list class="md-double-line">
         <md-subheader>Phone</md-subheader>
@@ -12,7 +17,7 @@
           <md-icon class="md-primary">phone</md-icon>
 
           <div class="md-list-item-text">
-            <span>(650) 555-1234</span>
+            <span>(744) 555-1234</span>
             <span>Mobile</span>
           </div>
 
@@ -39,14 +44,14 @@
           <md-icon class="md-primary">email</md-icon>
 
           <div class="md-list-item-text">
-            <span>aliconnors@example.com</span>
+            <span>hichem@example.com</span>
             <span>Personal</span>
           </div>
         </md-list-item>
 
         <md-list-item class="md-inset">
           <div class="md-list-item-text">
-            <span>ali_connors@example.com</span>
+            <span>hichem1@example.com</span>
             <span>Work</span>
           </div>
         </md-list-item>
@@ -72,5 +77,8 @@
     overflow: auto;
     border: 1px solid rgba(#000, .12);
     margin: auto; position: absolute; left: 0px; right: 1100px; 
+  }
+  .title{
+    text-align: center
   }
 </style>

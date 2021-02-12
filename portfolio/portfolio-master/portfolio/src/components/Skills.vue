@@ -9,16 +9,16 @@
 
     <b-card-group class="viewport">
     
-    <b-card header="Default" class="text-center">
-    <h5>No label</h5>
-     <b-card-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</b-card-text>
+    <b-card header="Skills" class="text-center">
+    
+     <b-card-text>Vue</b-card-text>
     <b-progress :value="value" :max="max" class="mb-3"></b-progress>
-     <b-card-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</b-card-text>
-    <b-progress :value="value" :max="max" class="mb-3"></b-progress>
-     <b-card-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</b-card-text>
-    <b-progress :value="value" :max="max" class="mb-3"></b-progress>
-     <b-card-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</b-card-text>
-    <b-progress :value="value" :max="max" class="mb-3"></b-progress>
+     <b-card-text>React</b-card-text>
+    <b-progress :value="value1" :max="max1" class="mb-3"></b-progress>
+     <b-card-text>MongoDB</b-card-text>
+    <b-progress :value="value2" :max="max2" class="mb-3"></b-progress>
+     <b-card-text>Mysql</b-card-text>
+    <b-progress :value="value3" :max="max3" class="mb-3"></b-progress>
 
     </b-card>
 
@@ -34,7 +34,13 @@
     data() {
       return {
         value: 33.333333333,
-        max: 50
+        max: 50,
+        value1: 20.333333333,
+        max1: 50,
+        value2: 33.333333333,
+        max2: 50,
+        value3: 10.333333333,
+        max3: 50
       }
     }
   }
