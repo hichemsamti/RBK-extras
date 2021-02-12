@@ -5,6 +5,7 @@ import {
   NavLink,
 } from "react-router-dom";
 import routes from "./routes/route.js";
+import"./css/Appcss.css"
 
 const App = () => {
   return (
