@@ -1,18 +1,35 @@
 const passport = require('passport')
 
-const GoogleStratyegy=require('passport-google-oauth20')
+const GoogleStrategy=require('passport-google-oauth20')
+
+const keys = require("./keys")
+
+const User=require("../models/user")
 
 passport.use(
     new GoogleStrategy ({
 
-        clientID:"351186317702-2le314ptc5m0cte3ochlrp0ib0lhcvm3.apps.googleusercontent.com",
-        clientSecret:"mE3Nl6_wC4gdaiR7NF-PASr2"
+        callbackURL:"http://localhost:3000/auth/google/redirect",
+        clientID:keys.google.clientID,
+        clientSecret: keys.google.clientSecret
 
 // options for the google strat
 
-}), ()=>{
+}, (accessToken,refreshToken,profile,done)=>{
 
-     //passport callback
+     //passport callback function
+
+     console.log('passport callback is fired')
+     console.log(profile)
+
+     new User({
+         username:profile.displayName,
+         googleid:profile.id
+     }).save().then((newUser)=>{
+         console.log('new user created:' + newUser)
+     })
+   
+
 
 }
-)
+))
