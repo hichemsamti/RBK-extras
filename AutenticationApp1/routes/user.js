@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const passport=require('passport')
-const clientSide = "http://localhost:8080" || production
+const clientSide = "http://localhost:8080/profile" || production
 
 
 
@@ -33,7 +33,8 @@ router.get('/google',passport.authenticate('google',{
 //callback route for goggle to redirect to
 
 router.get('/google/redirect', passport.authenticate('google'),(req,res)=>{
-    res.redirect(clientSide)
+   res.redirect(clientSide)
+  
 })
 
 

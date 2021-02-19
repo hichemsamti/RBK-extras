@@ -42,7 +42,7 @@ passport.use(
 
             console.log("current user" + currentUser)
             done(null,currentUser)
-
+           
             //already is a user
 
          }else{

@@ -1,21 +1,19 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  <!---  <button @click="authGoogle">regester google</button> !--->
-  <a href="http://localhost:3001/auth/google">google</a>
+
+     <router-view> </router-view>
+    
+  
   </div>
 </template>
 
 <script>
 
-import HelloWorld from './components/HelloWorld.vue'
+
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
-  },
+
 
 }
 </script>
