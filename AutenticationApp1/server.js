@@ -10,16 +10,21 @@ const mongoose=require('mongoose')
 
 const keys=require("./config/keys")
 
-const cookieSession= require('cookie-session')
+//const cookieSession= require('cookie-session')
+
+
 
 const passport= require('passport')
 
 const app = express()
 
-app.use(cookieSession({
+app.use(express.json())
+
+
+/*app.use(cookieSession({
     maxAge:24*60*60*1000,
     keys:[keys.session.cookieKey]
-}))
+}))*/
 
 
 //app.set('view engine','ejs')

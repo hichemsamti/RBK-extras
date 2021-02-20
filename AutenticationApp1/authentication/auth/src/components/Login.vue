@@ -44,7 +44,7 @@ export default{
           document.cookie=`id=${response.data.user._id}`
         })
 
-
+        this.$router.push("/profilegoogle");
 
         }
 

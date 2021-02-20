@@ -35,7 +35,7 @@ export default{
         axios.post("http://localhost:3001/auth/signup",user)
         
         
-
+       console.log(user)
 
 
         }

@@ -15,9 +15,14 @@ export default new Router({
       component: () => import("../components/Signup.vue"),
      },
      {
-       path: "/profile",
-       name:"Profile",
-       component: () =>import("../components/Profile.vue")
+       path: "/profilegoogleEdit",
+       name:"ProfileGoogleEdit",
+       component: () =>import("../components/ProfileGoogleEdit.vue")
+     },
+     { 
+       path: "/profileEdit",
+       name:"profileEdit",
+       component:() =>import("../components/ProfileEdit.vue")
      }
     ]
     
