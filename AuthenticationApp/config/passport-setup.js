@@ -6,6 +6,19 @@ const keys = require("./keys")
 
 const User=require("../models/user")
 
+passport.serializeUser((user,done)=>{
+    done(null,user.id)
+})
+
+passport.deserializeUser((id,done)=>{
+
+    User.findById(id).then((user)=>{
+        done(null,user)
+    })
+
+})
+
+
 passport.use(
     new GoogleStrategy ({
 
@@ -20,14 +33,32 @@ passport.use(
      //passport callback function
 
      console.log('passport callback is fired')
-     console.log(profile)
+    
 
-     new User({
-         username:profile.displayName,
-         googleid:profile.id
-     }).save().then((newUser)=>{
-         console.log('new user created:' + newUser)
+     //check if user exists in db
+     User.findOne({googleid:profile.id}).then((currentUser)=>{
+         if(currentUser){
+
+
+            console.log("current user" + currentUser)
+            done(null,currentUser)
+
+            //already is a user
+
+         }else{
+            new User({
+                username:profile.displayName,
+                googleid:profile.id
+            }).save().then((newUser)=>{
+                console.log('new user created:' + newUser)
+                done(null,newUser)
+            })
+             // not a user create a user
+         }
      })
+
+
+  
    
 
 

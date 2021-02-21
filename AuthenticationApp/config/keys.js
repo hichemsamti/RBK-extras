@@ -10,6 +10,10 @@ module.exports={
     mongodb:{
         dbURI:"mongodb+srv://hichem:1-hichemmarwa@cluster0.vxhri.mongodb.net/<dbname>?retryWrites=true&w=majority"
 
+    },
+    session:{
+        cookieKey:"aaa"
+
     }
 
 }
