@@ -5,7 +5,7 @@
 <button type=button @click="logout"> logout </button>
 
 
-<div>
+<!--<div>
     <div class="viewport">
       <md-toolbar :md-elevation="1">
         <h2 class=" title" >{{user.username}}</h2>
@@ -72,7 +72,7 @@
 
       </md-list>
     </div>
-    </div>
+    </div>!-->
 
 </div>
 </template>
@@ -93,9 +93,13 @@ export default{
         }
     },
 
-   async created (){
-     this.getUser()
-   },
+  /* async beforeMount(){
+     var resp= await axios.get("http://localhost:3001/auth/google/redirect")
+   console.log(resp)
+   this.user=resp.data
+   document.cookie=`id=${this.user._id}`
+
+   },*/
 
    
    

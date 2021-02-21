@@ -84,7 +84,7 @@ check('password','Password is required')
 
         if(isPasswordMatch){
 
-            const payload ={
+       /* const payload ={
                user
                     
                 
@@ -98,10 +98,13 @@ check('password','Password is required')
                    if(err) throw error
                    res.json({token})
                    console.log(token)
+                   console.log(user)
                 }
             )
 
-        }
+        }*/
+        res.json(user)
+    }
         else{
             return res.status(401).json({msg:"password does not match"})
         }
@@ -137,6 +140,17 @@ router.post('/filtertoken',async(req,res)=>{
         user.save(()=>{
           res.json(user)
         })
+     })
+
+
+     router.get('/:id', async(req,res)=>{
+         try{
+         var user= await User.findById(req.params.id)
+         res.json(user)
+         }catch(error){
+             console.log(error)
+         }
+
      })
 
 
@@ -176,6 +190,7 @@ router.get('/google',passport.authenticate('google',{
 
 router.get('/google/redirect', passport.authenticate('google'),(req,res)=>{
    res.redirect(clientSide)
+  
   
 })
 

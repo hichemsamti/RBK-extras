@@ -41,16 +41,17 @@ export default{
         
       )
          .then((response) => {
+           console.log(response.data)
           
-            document.cookie=`id=${response.data.user._id}`,
-            console.log(response.data);
+            document.cookie=`id=${response.data._id}`
+            
              
         
         
       
         
         })
-        .catch((error)=>{console.log(error)})
+        .catch(error=>{console.log(error)})
 
         this.$router.push("/profile");
       }

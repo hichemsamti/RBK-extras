@@ -6,6 +6,9 @@ const authRoutes= require('./routes/user')
 
 const passportSetup= require('./config/passport-setup')
 
+
+const cookieSession= require('cookie-session')
+
 const mongoose=require('mongoose')
 
 const keys=require("./config/keys")
@@ -17,6 +20,11 @@ var cors = require('cors')
 const passport= require('passport')
 
 const app = express()
+
+app.use(cookieSession({
+  maxAge:24*60*60*1000,
+  keys:[keys.session.cookieKey]
+}))
 
 app.use(express.json())
 

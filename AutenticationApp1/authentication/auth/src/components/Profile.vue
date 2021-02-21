@@ -110,7 +110,7 @@ export default{
      data() {
         return {
             user:null,
-            id:document.cookies.split("=")[1],
+            id:document.cookie.split("=")[1],
         }
     },
 
@@ -119,14 +119,14 @@ export default{
    },
    methods: {
     logout() {
-   cookie.remove("username");
+   cookie.remove("id");
       localStorage.clear();
       window.location.replace("/");
     
      
   },
   async getUser(){
-           const res= await axios.get("https://localhost:3001/auth/"+ this.id);
+           const res= await axios.get("http://localhost:3001/auth/"+ this.id);
             
            this.user=res.data
            console.log( res.data)
