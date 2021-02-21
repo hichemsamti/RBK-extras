@@ -1,7 +1,7 @@
 const router = require('express').Router()
 const passport=require('passport')
 const clientSide = "http://localhost:8080/profilegoogle" || production
-
+const jwtDecode= require ("jwt-decode")
 
 
 //auth login
@@ -48,28 +48,14 @@ router.post('/signup',
 
         await user.save()
 
-     /*   const payload ={
-            user:{
-                id:user.id
-         
-            }
-        }
-
-        jwt.sign(
-            payload,
-           "azerty",
-            (err,token)=>{
-               if(err) throw error
-               res.json({token})
-            }
-        )
-       */
+    
 
     }catch(error){
         console.log(error.message)
         return res.status(500).json({msg:"server error..."})
     }
 })
+
 
 router.post('/login',
 [
@@ -82,10 +68,7 @@ check('password','Password is required')
 ,async (req,res)=>{
     try{
 
-
-      console.log(req.body)
-
-        var {email,password} = req.body
+        var {email,password}=req.body
         var errors=validationResult(req)
         var user= await User.findOne({email})
 
@@ -102,18 +85,19 @@ check('password','Password is required')
         if(isPasswordMatch){
 
             const payload ={
-                user:{
-                    id:user.id
-             
-                }
+               user
+                    
+                
             }
     
             jwt.sign(
                 payload,
-                "azerty",
+                'azertyyyyy',
+                {expiresIn:300},
                 (err,token)=>{
                    if(err) throw error
                    res.json({token})
+                   console.log(token)
                 }
             )
 
@@ -129,6 +113,38 @@ check('password','Password is required')
 })
 
 
+router.post('/filtertoken',async(req,res)=>{
+
+    try{
+        var userId= jwtDecode(req.body.token).user._id
+        console.log(userId)
+        var user1 = await (await User.findOne({_id:userId})).isSelected("-Password")
+        console.log(user1)
+        res.send(user1)
+      }catch(err){
+        res.send({err,status:false})
+      }
+    })
+
+
+    router.put('/edit/:id',async(req,res)=>{
+        var user= await User.findById(req.params.id)
+        user.username=req.body.username,
+        user.password=req.body.password,
+        user.email=req.body.email,
+        user.photo=req.body.photo,
+        user.phone=req.body.phone
+        user.save(()=>{
+          res.json(user)
+        })
+     })
+
+
+
+
+
+
+
 
 
 
@@ -138,7 +154,7 @@ check('password','Password is required')
 })*/
 
 //auth logout
-router.get('/logout',(req,res)=>{
+/*router.get('/logout',(req,res)=>{
 
     //handle with passport
 
@@ -147,7 +163,7 @@ router.get('/logout',(req,res)=>{
     req.session.destroy()
     res.redirect('/')
 })
-
+*/
 
 //auth with google
 

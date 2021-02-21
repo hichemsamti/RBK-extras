@@ -2,8 +2,12 @@ const mongoose=require('mongoose')
 const Schema=mongoose.Schema
 
 const userSchema= new Schema({
-    username:String,
-    googleid:String,
+    username:{
+        type: String,
+    },
+    googleid:{
+        type: String,
+    },
     phone:{
         type:Number,
         default:0

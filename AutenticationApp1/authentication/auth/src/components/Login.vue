@@ -7,7 +7,7 @@
   <form class="login-container">
     <p><input type="email" v-model="email" placeholder="Email"></p>
     <p><input type="password" v-model="password" placeholder="Password"></p>
-    <p><input type="submit" @click="login" value="Log in"></p>
+    <p><input type="button" @click="login" value="Log in"></p>
     <p class="fix-text-normalize"><router-link to="/signup"> sign up</router-link></p>
     <p class="fix-text-normalize"><a href="http://localhost:3001/auth/google"><button type="button" class="login-with-google-btn" >
   Sign in with Google
@@ -31,30 +31,44 @@ export default{
         }
     },
     methods:{
-        login() {
+      login() {
             var user={
             email:this.email,
             password:this.password
            }
 
-        axios.post("http://localhost:3001/auth/login",user)
-         
-        .then((response)=>{
-          console.log(response.data)
-          document.cookie=`id=${response.data.user._id}`
+        axios.post("http://localhost:3001/auth/login",user     
+        
+      )
+         .then((response) => {
+          
+            document.cookie=`id=${response.data.user._id}`,
+            console.log(response.data);
+             
+        
+        
+      
+        
         })
+        .catch((error)=>{console.log(error)})
 
-        this.$router.push("/profilegoogle");
-
-        }
-
+        this.$router.push("/profile");
+      }
     }
-
-
 }
+ 
+        // axios.post("http://localhost:3001/auth/login",user)
+         
+        // .then((response)=>{
+        //   console.log(response.data)
+         
+        // })
 
-
-
+        // this.$router.push("/profile");
+        
+    
+      
+    
 
 </script>
 

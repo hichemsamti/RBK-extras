@@ -78,7 +78,7 @@
 import axios from "axios"
 
 export default{
-    name:"ProfileGoogle",
+    name:"ProfileGoogleEdit",
 
     data:()=>{
         return{
@@ -92,7 +92,7 @@ export default{
     },
     methods:{
         async Edit() {
-            await axios.put(`localhost:3001/auth/${this.id}`, {
+            await axios.put(`localhost:3001/auth/edit/${this.id}`, {
           photo: this.photo,
         
           phone: this.phone,

@@ -10,9 +10,9 @@ const mongoose=require('mongoose')
 
 const keys=require("./config/keys")
 
-//const cookieSession= require('cookie-session')
 
 
+var cors = require('cors')
 
 const passport= require('passport')
 
@@ -20,11 +20,24 @@ const app = express()
 
 app.use(express.json())
 
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "http://localhost:3001");
+    res.header(
+      "Access-Control-Allow-Headers",
+      "Origin, X-Requested-With, Content-Type, Accept, Authorization,  X-PINGOTHER"
+    );
+    res.header("Access-Control-Allow-Credentials", true);
+    res.header(
+      "Access-Control-Allow-Methods",
+      "GET, POST, PUT, PATCH, DELETE, HEAD, OPTIONS"
+    );
+    next();
+  });
 
-/*app.use(cookieSession({
-    maxAge:24*60*60*1000,
-    keys:[keys.session.cookieKey]
-}))*/
+  app.use(cors())
+
+
+
 
 
 //app.set('view engine','ejs')

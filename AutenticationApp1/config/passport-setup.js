@@ -6,6 +6,8 @@ const keys = require("./keys")
 
 const User=require("../models/user")
 
+const jwt=require('jsonwebtoken')
+
 passport.serializeUser((user,done)=>{
     done(null,user.id)
 })
@@ -38,10 +40,19 @@ passport.use(
      //check if user exists in db
      User.findOne({googleid:profile.id}).then((currentUser)=>{
          if(currentUser){
+             
 
 
             console.log("current user" + currentUser)
+            
+     
+             
+             
+               
             done(null,currentUser)
+
+           
+ 
            
             //already is a user
 
@@ -51,7 +62,15 @@ passport.use(
                 googleid:profile.id
             }).save().then((newUser)=>{
                 console.log('new user created:' + newUser)
+
+                
+         
+                 
+                
                 done(null,newUser)
+
+               
+     
             })
              // not a user create a user
          }
