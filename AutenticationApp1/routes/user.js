@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const passport=require('passport')
-const clientSide = "http://localhost:8080/profilegoogle" || production
+const clientSide = "http://localhost:8080/profilegoogle/" || production
 const jwtDecode= require ("jwt-decode")
 
 
@@ -11,7 +11,7 @@ const jwt=require('jsonwebtoken')
 const bcryptjs=require('bcryptjs')
 const {check,validationResult}=require('express-validator')
 const User=require("../models/user")
-//const config=require('config')
+
 
 router.post('/signup',
 [
@@ -22,7 +22,7 @@ router.post('/signup',
 ,async (req,res)=>{
     try{
 
-      console.log(req.body)
+    //   console.log(req.body)
         var { email,password}=req.body
         var  user=await User.findOne({email})
         const errors = validationResult(req)
@@ -84,25 +84,8 @@ check('password','Password is required')
 
         if(isPasswordMatch){
 
-       /* const payload ={
-               user
-                    
-                
-            }
+       
     
-            jwt.sign(
-                payload,
-                'azertyyyyy',
-                {expiresIn:300},
-                (err,token)=>{
-                   if(err) throw error
-                   res.json({token})
-                   console.log(token)
-                   console.log(user)
-                }
-            )
-
-        }*/
         res.json(user)
     }
         else{
@@ -116,7 +99,7 @@ check('password','Password is required')
 })
 
 
-router.post('/filtertoken',async(req,res)=>{
+/*router.post('/filtertoken',async(req,res)=>{
 
     try{
         var userId= jwtDecode(req.body.token).user._id
@@ -127,7 +110,7 @@ router.post('/filtertoken',async(req,res)=>{
       }catch(err){
         res.send({err,status:false})
       }
-    })
+    })*/
 
 
     router.put('/edit/:id',async(req,res)=>{
@@ -143,10 +126,13 @@ router.post('/filtertoken',async(req,res)=>{
      })
 
 
-     router.get('/:id', async(req,res)=>{
+     router.get('/authentication/:id', async(req,res)=>{
          try{
          var user= await User.findById(req.params.id)
+        //  console.log(user)
+
          res.json(user)
+
          }catch(error){
              console.log(error)
          }
@@ -162,22 +148,8 @@ router.post('/filtertoken',async(req,res)=>{
 
 
 
-/*router.get('/login',(req,res)=>{
-    //res.render('login')
 
-})*/
 
-//auth logout
-/*router.get('/logout',(req,res)=>{
-
-    //handle with passport
-
-    res.send('logging out')
-    req.logout()
-    req.session.destroy()
-    res.redirect('/')
-})
-*/
 
 //auth with google
 

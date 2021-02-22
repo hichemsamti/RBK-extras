@@ -80,7 +80,7 @@
 
 
 <script>
-import axios from "axios"
+//import axios from "axios"
 
 export default{
     name:"ProfileGoogle",
@@ -103,7 +103,7 @@ export default{
 
    
    
-   methods: {
+   /*methods: {
   
      
   
@@ -123,7 +123,7 @@ export default{
 
     
   
-}
+}*/
 }
 
 

@@ -74,7 +74,7 @@ export default{
 </script>
 
 
-<style>
+<style scoped>
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
 
 body {

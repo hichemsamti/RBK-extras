@@ -8,11 +8,9 @@
     <p><input type="email" v-model="email" placeholder="Email"></p>
     <p><input type="password" v-model="password" placeholder="Password"></p>
     <p><input type="submit" @click="signup" value="Sign up"></p>
-    <p class="fix-text-normalize"><router-link to="/"> log in</router-link></p>
-    
+    <p class="fix-text-normalize"><router-link to="/"> log in </router-link></p>
   </form>
 </div>
-
 </template>
 
 <script>
@@ -31,14 +29,9 @@ export default{
             email:this.email,
             password:this.password
            }
-
         axios.post("http://localhost:3001/auth/signup",user)
-        
-        
-       console.log(user)
+        console.log(user)
         this.$router.push("/");
-
-
         }
 
     }

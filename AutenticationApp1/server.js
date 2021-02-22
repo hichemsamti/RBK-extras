@@ -80,10 +80,9 @@ app.use("/auth",authRoutes)
 //app.use('/profile',profileRoutes)
 
 
-/*app.get('/',(req,res)=>{
-    res.render('home')
-})*/
 
 app.listen(3001,()=>{
     console.log('app now listen')
 })
+
+

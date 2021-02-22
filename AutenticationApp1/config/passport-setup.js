@@ -9,11 +9,12 @@ const User=require("../models/user")
 const jwt=require('jsonwebtoken')
 
 passport.serializeUser((user,done)=>{
+    console.log('serial')
     done(null,user.id)
 })
 
 passport.deserializeUser((id,done)=>{
-
+    console.log(id)
     User.findById(id).then((user)=>{
         done(null,user)
     })
@@ -83,3 +84,5 @@ passport.use(
 
 }
 ))
+
+
