@@ -1,7 +1,9 @@
 const router = require('express').Router()
+
 const passport=require('passport')
-const clientSide = "http://localhost:8080/profilegoogle/" || production
-const jwtDecode= require ("jwt-decode")
+//const querystring = require('querystring')
+const clientSide = "http://localhost:8080/profilegoogle" || production
+//const jwtDecode= require ("jwt-decode")
 
 
 //auth login
@@ -89,7 +91,9 @@ check('password','Password is required')
         res.json(user)
     }
         else{
-            return res.status(401).json({msg:"password does not match"})
+
+            
+           return res.status(401).json({msg:"password does not match"})
         }
 
     }catch(error){
@@ -116,7 +120,7 @@ check('password','Password is required')
     router.put('/edit/:id',async(req,res)=>{
         var user= await User.findById(req.params.id)
         user.username=req.body.username,
-        user.password=req.body.password,
+      
         user.email=req.body.email,
         user.photo=req.body.photo,
         user.phone=req.body.phone
@@ -144,13 +148,6 @@ check('password','Password is required')
 
 
 
-
-
-
-
-
-
-
 //auth with google
 
 router.get('/google',passport.authenticate('google',{
@@ -160,11 +157,21 @@ router.get('/google',passport.authenticate('google',{
 
 //callback route for goggle to redirect to
 
-router.get('/google/redirect', passport.authenticate('google'),(req,res)=>{
-   res.redirect(clientSide)
-  
-  
+router.get('/google/redirect', passport.authenticate('google'), (req,res)=>{
+    
+     req.app.set('user',res.req.user)
+     res.redirect(clientSide)
 })
+
+   router.get('/googlerender',(req,res)=>{
+       var user=req.app.get('user')
+    console.log('render', req.app.get('user'))
+    res.json(user)
+});
+ 
+   
+  
+
 
 
 module.exports=router

@@ -41,10 +41,12 @@ export default{
         
       )
          .then((response) => {
-           console.log(response.data)
-          
-            document.cookie=`id=${response.data._id}`
             
+           console.log(response.data)
+          window.location.replace("/profile");
+            document.cookie=`id=${response.data._id}`
+             
+             
              
         
         
@@ -53,7 +55,7 @@ export default{
         })
         .catch(error=>{console.log(error)})
 
-        this.$router.push("/profile");
+        
       }
     }
 }
@@ -101,11 +103,11 @@ body {
   margin-right: auto;
   margin-left: auto;
   border: 12px solid transparent;
-  border-bottom-color: #28d;
+  border-bottom-color: rgb(34, 215, 221);
 }
 
 .login-header {
-  background: #28d;
+  background: rgb(34, 221, 205);
   padding: 20px;
   font-size: 1.4em;
   font-weight: normal;

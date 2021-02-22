@@ -4,7 +4,7 @@
 <template>
 
 <div>
-  <button type=button @click="logout" class="logme-in-btn"> Logout </button>
+ <button type=button @click="logout" class="logme-in-btn"> Logout </button> 
   <p class="fix-text-normalize"><router-link to="/profileedit"> Edit </router-link></p>
 
   <div class="input-data-wrapper-form">
@@ -47,15 +47,8 @@
             <span>{{user.email}}</span>
           </div>
         </md-list-item>
-        <!-- Pasword zone -->
-        <md-list-item>
-          <div>
-              <md-icon class="md-primary block-pass">Password</md-icon>
-          </div>
-          <div class="md-list-item-text">
-            <span>{{user.password}}</span>
-          </div>
-        </md-list-item>
+        
+        
       </md-list>
       </div>
       </div>
@@ -91,6 +84,7 @@ export default{
   },
   async getUser(){
            this.id=document.cookie.split("=")[1]
+           console.log(this.id)
            const res= await axios.get("http://localhost:3001/auth/authentication/"+ this.id);
             
            this.user=res.data

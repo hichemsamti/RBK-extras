@@ -2,7 +2,7 @@ const express = require ('express')
 
 const authRoutes= require('./routes/user')
 
-//const profileRoutes=require('./routes/profile-routes')
+
 
 const passportSetup= require('./config/passport-setup')
 
@@ -20,11 +20,18 @@ var cors = require('cors')
 const passport= require('passport')
 
 const app = express()
+const session = require('express-session');
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true,
+  
+}))
 
-app.use(cookieSession({
+/*app.use(cookieSession({
   maxAge:24*60*60*1000,
   keys:[keys.session.cookieKey]
-}))
+}))*/
 
 app.use(express.json())
 

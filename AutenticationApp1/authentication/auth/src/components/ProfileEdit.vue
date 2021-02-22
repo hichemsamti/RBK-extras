@@ -6,16 +6,16 @@
       <!-- form data entry or display -->
       <md-card-content>
         <md-field>
-          <md-input v-model="username" placeholder="Enter user Name"> </md-input>
+          <md-input  :disabled="isDisabled" v-model="username" placeholder="Enter user Name"> </md-input>
         </md-field>
         <md-field>
-          <md-input v-model="photo" placeholder="Put URL of the Image"> </md-input>
+          <md-input   :disabled="isDisabled" v-model="photo" placeholder="Put URL of the Image"> </md-input>
         </md-field>
         <md-field>
-          <md-input v-model="phone" placeholder="Enter phone number"> </md-input>
+          <md-input  :disabled="isDisabled" v-model="phone" placeholder="Enter phone number"> </md-input>
         </md-field>
         <md-field>
-          <md-input v-model="email" placeholder="Enter email"> </md-input>
+          <md-input  :disabled="isDisabled" v-model="email" placeholder="Enter email"> </md-input>
         </md-field>
         <md-button @click="save" class="md-primary md-raised">Save</md-button>
         <md-button @click="getOne(user)" class="md-primary md-raised">Edit</md-button>
@@ -36,7 +36,8 @@ export default{
             phone:"",
             email:"",
             id:0,
-            user:""
+            user:"",
+            edituser:false
         }
     },
     async created(){
@@ -59,6 +60,7 @@ export default{
           this.username =user.username;
           this.phone =user.phone;
           this.email = user.email;
+          this.edituser=true
           console.log("ok")
         },
         async getUser(){
@@ -67,7 +69,14 @@ export default{
           this.user=res.data
           console.log( res.data)
         },
-    }
+    },
+    computed:{
+      isDisabled() {
+       return this.edituser === false
+    
+  }
+}
+    
 }
 
 
